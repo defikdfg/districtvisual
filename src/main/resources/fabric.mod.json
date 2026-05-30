@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "districtvisual",
+  "version": "1.0.0",
+  "name": "DistrictVisual",
+  "description": "A feature-rich visual mod for Minecraft 1.21.4 inspired by Pulse Visuals",
+  "authors": ["district"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/districtvisual/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.district.visual.DistrictVisualClient"]
+  },
+  "mixins": ["districtvisual.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.4"
+  }
+}
