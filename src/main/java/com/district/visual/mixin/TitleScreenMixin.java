@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin {
 
-    @Inject(method = "initWidgetsNormal", at = @At("HEAD"), cancellable = true)
-    private void onInitWidgets(CallbackInfo ci) {
+    @Inject(method = "init", at = @At("HEAD"), cancellable = true)
+    private void onInit(CallbackInfo ci) {
         net.minecraft.client.MinecraftClient mc = net.minecraft.client.MinecraftClient.getInstance();
         mc.setScreen(new MacTitleScreen());
         ci.cancel();
