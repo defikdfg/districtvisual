@@ -24,7 +24,7 @@ public class ClickGUI extends Screen {
     @Override
     public void render(DrawContext ctx, int mouseX, int mouseY, float delta) {
         // Dark overlay
-        ctx.fill(0, 0, this.width, this.height, 0xCC000000);
+        ctx.fill(0, 0, this.width, this.height, 0xFF000000);
 
         if (textRenderer == null) { super.render(ctx, mouseX, mouseY, delta); return; }
 
