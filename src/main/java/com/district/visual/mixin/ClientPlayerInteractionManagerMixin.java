@@ -13,6 +13,10 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 
 @Mixin(ClientPlayerInteractionManager.class)
 public class ClientPlayerInteractionManagerMixin {
@@ -30,5 +34,15 @@ public class ClientPlayerInteractionManagerMixin {
             if (mm.hitSound.isEnabled()) HitSoundModule.playHit(mc, isCrit);
         }
         KeystrokesModule.onLMB();
+    }
+
+    @Inject(method = "interactItem", at = @At("HEAD"))
+    private void onInteractItem(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        KeystrokesModule.onRMB();
+    }
+
+    @Inject(method = "interactBlock", at = @At("HEAD"))
+    private void onInteractBlock(net.minecraft.client.network.ClientPlayerEntity player, Hand hand, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
+        KeystrokesModule.onRMB();
     }
 }
